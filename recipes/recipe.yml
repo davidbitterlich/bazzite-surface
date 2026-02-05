@@ -17,15 +17,14 @@ modules:
       files:
         - https://pkg.surfacelinux.com/fedora/linux-surface.repo
     install:
+      allow-erasing: true
       packages:
-        - kernel-surface
-        - iptsd
-        - libwacom-surface
-        - surface-secureboot
-    remove:
-      packages:
-        - firefox
-        - firefox-langpacks 
+        - repo: linux-surface
+          packages:
+            - kernel-surface
+            - iptsd
+            - libwacom-surface
+            - surface-secureboot
 
   - type: default-flatpaks
     configurations:
