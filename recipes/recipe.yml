@@ -12,22 +12,21 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules: 
-  - type: dnf
+  - type: rpm-ostree
     repos:
-      files:
-        - https://pkg.surfacelinux.com/fedora/linux-surface.repo
+      - https://pkg.surfacelinux.com/fedora/linux-surface.repo
+
+    override:
+      replace:
+        - kernel-surface
+        - kernel-surface-core
+        - kernel-surface-modules
+        - kernel-surface-modules-extra
+
     install:
-      allow-erasing: true
-      packages:
-        - repo: linux-surface
-          packages:
-            - kernel-surface
-            - iptsd
-            - libwacom-surface
-            - surface-secureboot
-    remove:
-      packages:
-        - kernel
+      - iptsd
+      - libwacom-surface
+      - surface-secureboot
 
   - type: default-flatpaks
     configurations:
