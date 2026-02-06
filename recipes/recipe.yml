@@ -16,17 +16,22 @@ modules:
     repos:
       - https://pkg.surfacelinux.com/fedora/linux-surface.repo
 
-    override:
-      replace:
-        - kernel-surface
-        - kernel-surface-core
-        - kernel-surface-modules
-        - kernel-surface-modules-extra
+    replace:
+      - from-repo: https://pkg.surfacelinux.com/fedora/linux-surface.repo
+        packages:
+          - libwacom
 
     install:
       - iptsd
       - libwacom-surface
       - surface-secureboot
+      - kernel-surface
+      - kernel-surface-core
+      - kernel-surface-modules
+      - kernel-surface-modules-extra
+    
+    remove:
+      - kernel
 
   - type: default-flatpaks
     configurations:
